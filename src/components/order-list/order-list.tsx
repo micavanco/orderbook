@@ -10,7 +10,7 @@ interface OrderListProps {
 
 export const OrderList: React.FC<OrderListProps> = ({ title, list}) => (
     <div className="order-list">
-        <h3>{title}</h3>
+        <h3 className="order-list__title">{title}</h3>
         <ul>
             {
                 list.map(order => <OrderItem order={order}/>)

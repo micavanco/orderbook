@@ -1,0 +1,14 @@
+
+.table {
+  display: flex;
+  margin-bottom: 20px;
+
+  &__bid {
+    flex: 1;
+  }
+
+  &__ask {
+    flex: 1;
+    border-left: 1px solid black;
+  }
+}

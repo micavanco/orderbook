@@ -1,0 +1,10 @@
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__title {
+    text-align: center;
+  }
+}
