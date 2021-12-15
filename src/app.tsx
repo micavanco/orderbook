@@ -1,11 +1,11 @@
 import React from 'react';
 import './app.scss';
-import { Header } from "./components/header/header";
+import { Orderbook } from "./components/orderbook/orderbook";
 
 export const App: React.FC = () => {
   return (
     <div className="app-container">
-      <Header/>
+      <Orderbook/>
     </div>
   );
 }
