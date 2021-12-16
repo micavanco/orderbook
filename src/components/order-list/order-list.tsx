@@ -13,7 +13,7 @@ export const OrderList: React.FC<OrderListProps> = ({ title, list}) => (
         <h3 className="order-list__title">{title}</h3>
         <ul>
             {
-                list.map(order => <OrderItem order={order}/>)
+                list.map((order, index) => <OrderItem key={`order${index}`} order={order}/>)
             }
         </ul>
     </div>
