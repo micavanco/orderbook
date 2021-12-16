@@ -1,6 +1,6 @@
 export interface Order {
-    rate: number;
-    amount: number;
-    value: number;
-    offers: number;
+    rate: string;
+    amount: string;
+    value: string;
+    offers: string;
 }

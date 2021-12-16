@@ -1,10 +1,54 @@
+@import '../../styles/variables';
 
 .order-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  height: 100%;
+  font-family: $primary-font;
 
   &__title {
     text-align: center;
+  }
+
+  &__spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin: auto;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 50%, rgba(221,221,221,1) 50%);
+    border-radius: 100%;
+    text-align: center;
+    animation: rotate .8s infinite linear;
+
+    &-dot {
+      height: 30px;
+      width: 30px;
+      border-radius: 100%;
+      background: white;
+    }
+  }
+
+  @-webkit-keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
   }
 }

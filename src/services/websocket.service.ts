@@ -6,37 +6,79 @@ export default class WebsocketService {
 
     private socket: WebSocket = new WebSocket(this.BASE_URL);
 
-    private orders: Order[] = [];
+    private bidOrders: Order[] = [];
 
-    public connect(currency: string, handler: (orders: any) => void) {
-        this.socket.onopen = () => {
+    private askOrders: Order[] = [];
+
+    private currency = '';
+
+    public connect(currency: string, handler: (bidListData: Order[], askListData: Order[]) => void) {
+        if (!this.socket.onopen) {
+            this.socket.onopen = () => {
+                this.socket.send(JSON.stringify({
+                    action: 'subscribe-public',
+                    module: 'trading',
+                    path: `orderbook-limited/${currency}/10`
+                }));
+            }
+        } else {
             this.socket.send(JSON.stringify({
                 action: 'subscribe-public',
                 module: 'trading',
                 path: `orderbook-limited/${currency}/10`
             }));
         }
+
+        this.currency = currency;
         this.socket.onmessage = message => {
             const data = JSON.parse(message.data)
 
             if (data.action === 'push') {
                 const rawOrders = data.message.changes;
-                let orders: Order[] = rawOrders.map((item: any) => item.action === 'update' && {
-                    rate: parseFloat(item.state.ra).toFixed(2),
-                    amount: parseFloat(item.state.ca).toFixed(2),
-                    value: (parseFloat(item.state.ra) * parseFloat(item.state.ca)).toFixed(2),
-                    offers: parseFloat(item.state.co).toFixed(2)
-                }).filter((item: Order) => item);
-                orders.slice(0, 10);
+                const bidOrders: Order[] = [];
+                const askOrders: Order[] = [];
 
-                if (orders.length < 10) {
-                    orders.push(...this.orders.slice(0, 10 - orders.length));
+                rawOrders.forEach((item: any) => {
+                    if (item.action === 'update') {
+                        const value = {
+                            rate: parseFloat(item.state.ra).toFixed(2),
+                            amount: parseFloat(item.state.ca).toFixed(2),
+                            value: (parseFloat(item.state.ra) * parseFloat(item.state.ca)).toFixed(2),
+                            offers: parseFloat(item.state.co).toFixed(2)
+                        };
+
+                        item.entryType === 'Buy' ?  bidOrders.push(value) : askOrders.push(value);
+                    }
+                });
+
+                bidOrders.slice(0, 10);
+                askOrders.slice(0, 10);
+
+                if (bidOrders.length < 10) {
+                    bidOrders.push(...this.bidOrders.slice(0, 10 - bidOrders.length));
                 }
 
-                this.orders = [ ...orders ];
+                if (askOrders.length < 10) {
+                    askOrders.push(...this.askOrders.slice(0, 10 - askOrders.length));
+                }
 
-                handler(orders);
+                this.bidOrders = [ ...bidOrders ];
+                this.askOrders = [ ...askOrders ];
+
+                handler(this.bidOrders, this.askOrders);
             }
+        }
+    }
+
+    public disconnect(): void {
+        if (this.currency) {
+            this.socket.send(JSON.stringify({
+                action: 'unsubscribe',
+                module: 'trading',
+                path: `orderbook-limited/${this.currency}/10`
+            }));
+            this.bidOrders = [];
+            this.askOrders = [];
         }
     }
 
