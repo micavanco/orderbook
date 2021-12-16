@@ -1,0 +1,56 @@
+@import '../../styles/variables';
+
+.select {
+  position: relative;
+
+  &__button {
+    width: 102px;
+    margin-left: 20px;
+    padding: 6px 12px 6px 2px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-family: $primary-font;
+    transition: background-color 0.2s ease-in-out;
+    background: none;
+
+    &:hover {
+      background: $currency-select-background;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid $currency-select-background;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    height: 175px;
+    width: 160px;
+    top: 21px;
+    left: -11px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 4px;
+    -webkit-box-shadow: 3px 5px 24px -16px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 3px 5px 24px -16px rgba(66, 68, 90, 1);
+    box-shadow: 3px 5px 24px -16px rgba(66, 68, 90, 1);
+
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background: #f8f8f8;
+      }
+    }
+
+    &--close {
+      display: none;
+    }
+  }
+}

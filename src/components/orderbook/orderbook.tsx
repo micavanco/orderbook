@@ -13,6 +13,7 @@ const restApiService = new RestApiService();
 export const Orderbook: React.FC = () => {
     const [bidList, setBidList] = useState<Order[]>([]);
     const [askList, setAskList] = useState<Order[]>([]);
+    const [spread, setSpread] = useState<number>(0.0);
     const [currencies, setCurrencies] = useState<Currency[]>([]);
     const [currency, setCurrency] = useState<string>('BTC-PLN');
 
@@ -27,16 +28,21 @@ export const Orderbook: React.FC = () => {
       setCurrency(value);
       setBidList([]);
       setAskList([]);
+      setSpread(0.0);
     };
 
     const onDataChange = (bidListData: Order[], askListData: Order[]) => {
       setBidList(bidListData);
       setAskList(askListData);
+
+      if (askListData[0] && bidListData[0]) {
+        setSpread(parseFloat((parseFloat(askListData[0].rate) - parseFloat(bidListData[0].rate)).toFixed(2)));
+      }
     };
 
     return (
       <div className="orderbook">
-          <Header currencies={currencies} onCurrencyChange={onCurrencyChange}/>
+          <Header currencies={currencies} onCurrencyChange={onCurrencyChange} spread={spread}/>
           <Table bidList={bidList} askList={askList}/>
       </div>
     );

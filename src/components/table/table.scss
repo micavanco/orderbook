@@ -1,8 +1,13 @@
 
 .table {
   display: flex;
-  min-height: 532px;
+  flex-direction: column;
+  min-height: 450px;
   margin-bottom: 20px;
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+  }
 
   &__bid {
     flex: 1;
@@ -10,6 +15,9 @@
 
   &__ask {
     flex: 1;
-    border-left: 1px solid black;
+
+    @media screen and (min-width: 600px) {
+      border-left: 1px solid black;
+    }
   }
 }

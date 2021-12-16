@@ -2,14 +2,24 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 60px;
+  flex-direction: column;
   width: 100%;
+  padding-top: 50px;
   font-family: $primary-font;
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+    padding-top: 0;
+    height: 60px;
+  }
 
   &__select-box {
     display: flex;
+
+    @media screen and (min-width: 600px) {
+      flex: 1;
+    }
   }
 
   &__currency {
@@ -32,11 +42,24 @@
   }
 
   &__spread {
-    text-align: center;
+    padding: 10px 0;
+
+    @media screen and (min-width: 600px) {
+      flex: 1;
+    }
+
+    @media screen and (min-width: 600px) {
+      padding: 0;
+    }
   }
 
   &__range {
-    margin-right: 62px;
+    padding: 10px 0;
     text-align: center;
+
+    @media screen and (min-width: 600px) {
+      padding: 0;
+      margin-right: 62px;
+    }
   }
 }

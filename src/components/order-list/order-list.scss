@@ -20,6 +20,7 @@
     background: linear-gradient(90deg, rgba(255,255,255,1) 50%, rgba(221,221,221,1) 50%);
     border-radius: 100%;
     text-align: center;
+    -webkit-animation: rotate .8s infinite linear;
     animation: rotate .8s infinite linear;
 
     &-dot {
