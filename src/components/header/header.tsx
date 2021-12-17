@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './header.scss';
 import { Currency } from '../../models/currency.model';
 import { Select } from '../select/select';
+import { SelectCurrency } from '../select/select-currency';
 
 interface HeaderProps {
   currencies: Currency[];
@@ -21,24 +22,19 @@ export const Header: React.FC<HeaderProps> = ({ currencies, onCurrencyChange, sp
       onCurrencyChange(value);
     };
 
-    const onRealCurrencyChange = (event: React.ChangeEvent<any>) => {
-      const value = event.target.value;
+    const onRealCurrencyChange = (value: string) => {
       const cryptoValue = exchange.split('-')[0];
 
       onCurrencyChange(`${cryptoValue}-${value}`);
       setExchange(`${cryptoValue}-${value}`);
-      setRealCurrency(event.target.value);
+      setRealCurrency(value);
     };
 
     return (
         <header className="header">
             <div className="header__select-box">
               <Select list={currencies} realCurrency={realCurrency} onExchangeChange={onExchangeChange} exchange={exchange}/>
-              <select name="currency" className="header__currency" defaultValue={defaultRealCurrency} onChange={onRealCurrencyChange}>
-                {
-                  currencyList.map(currency => (<option key={currency} value={currency}>{currency}</option>))
-                }
-              </select>
+              <SelectCurrency list={currencyList} realCurrency={realCurrency} onRealCurrencyChange={onRealCurrencyChange}/>
             </div>
             <div className="header__spread">Spread: {spread}</div>
             <div className="header__range">Range</div>

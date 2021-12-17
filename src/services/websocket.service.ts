@@ -42,7 +42,7 @@ export default class WebsocketService {
                     if (item.action === 'update') {
                         const value = {
                             rate: parseFloat(item.state.ra).toFixed(2),
-                            amount: parseFloat(item.state.ca).toFixed(2),
+                            amount: item.state.ca,
                             value: (parseFloat(item.state.ra) * parseFloat(item.state.ca)).toFixed(2),
                             offers: parseFloat(item.state.co).toFixed(2)
                         };

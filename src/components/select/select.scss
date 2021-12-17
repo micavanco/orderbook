@@ -36,6 +36,7 @@
     -webkit-box-shadow: 3px 5px 24px -16px rgba(66, 68, 90, 1);
     -moz-box-shadow: 3px 5px 24px -16px rgba(66, 68, 90, 1);
     box-shadow: 3px 5px 24px -16px rgba(66, 68, 90, 1);
+    z-index: 1000;
 
     &-item {
       display: flex;
@@ -51,6 +52,11 @@
 
     &--close {
       display: none;
+      transition: all 1s ease-in;
+    }
+
+    &-currency {
+      height: 140px;
     }
   }
 }
