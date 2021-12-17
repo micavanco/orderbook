@@ -19,7 +19,11 @@ export const SelectCurrency: React.FC<SelectCurrencyProps> = ({ list, onRealCurr
 
   return (
     <div className="select">
-      <button className="select__button" onClick={() => setClose(!close)} onBlur={() => setClose(true)}>{selected}</button>
+      <button className="select__button" onClick={() => setClose(!close)} onBlur={() => setClose(true)}>
+        {selected}
+        <div className={`select__button-arrow${ close ? '' : ' select__button-arrow--flip' }`}>
+        </div>
+      </button>
       <div className={`select__dropdown select__dropdown-currency${ close ? ' select__dropdown--close' : '' }`}>
         {
           list.map(currency => (
