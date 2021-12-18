@@ -5,9 +5,24 @@
   flex-direction: column;
   height: 100%;
   font-family: $primary-font;
+  animation: appear-start .8s 1 ease-in;
 
   &__title {
     text-align: center;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    font-family: $primary-font;
+    font-weight: 600;
+    font-size: 0.875rem;
+
+    div {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__spinner {
@@ -54,24 +69,43 @@
   }
 }
 
-.appear-enter {
-  opacity: 0.01;
-  transform: scale(0.95);
+@-webkit-keyframes appear-start {
+  0% {
+    opacity: 0.01;
+  }
+  25% {
+    opacity: 0.21;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.appear-enter.appear-enter-active {
-  opacity: 1;
-  transform: scale(1);
-  transition: all 500ms ease-in;
-}
+@keyframes appear-start {
+  0% {
 
-.appear-leave {
-  opacity: 1;
-  transform: scale(1);
-}
+    opacity: 0.01;
+  }
+  25% {
 
-.appear-leave.appear-leave-active {
-  opacity: 0.01;
-  transform: scale(0.7);
-  transition: all 300ms ease-in;
+    opacity: 0.21;
+  }
+  50% {
+
+    opacity: 0.5;
+  }
+  75% {
+
+    opacity: 0.75;
+  }
+  100% {
+
+    opacity: 1;
+  }
 }

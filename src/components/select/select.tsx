@@ -15,7 +15,7 @@ export const Select: React.FC<SelectProps> = ({ list, realCurrency, exchange, on
 
   useEffect(() => {
     setSelected(exchange);
-  }, [realCurrency]);
+  }, [realCurrency, selected]);
 
   const click = (value: string) => {
     setSelected(value);

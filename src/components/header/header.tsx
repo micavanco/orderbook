@@ -36,8 +36,8 @@ export const Header: React.FC<HeaderProps> = ({ currencies, onCurrencyChange, sp
               <Select list={currencies} realCurrency={realCurrency} onExchangeChange={onExchangeChange} exchange={exchange}/>
               <SelectCurrency list={currencyList} realCurrency={realCurrency} onRealCurrencyChange={onRealCurrencyChange}/>
             </div>
-            <div className="header__spread">Spread: {spread}</div>
-            <div className="header__range">Range</div>
+            <div className="header__spread">Spread: <span>{spread}</span></div>
+            <div className="header__range"><span>24h max</span><span>24h min</span></div>
         </header>
     );
 }

@@ -43,6 +43,11 @@
 
   &__spread {
     padding: 10px 0;
+    font-size: 0.875rem;
+
+    span {
+      font-weight: 600;
+    }
 
     @media screen and (min-width: 600px) {
       flex: 1;
@@ -54,6 +59,9 @@
   }
 
   &__range {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
     padding: 10px 0;
     text-align: center;
 

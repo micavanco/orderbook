@@ -43,7 +43,7 @@ export const Orderbook: React.FC = () => {
     return (
       <div className="orderbook">
           <Header currencies={currencies} onCurrencyChange={onCurrencyChange} spread={spread}/>
-          <Table bidList={bidList} askList={askList}/>
+          <Table bidList={bidList} askList={askList} cryptoCurrency={currency.split('-')[0]} currency={currency.split('-')[1]}/>
       </div>
     );
 }
