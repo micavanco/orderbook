@@ -1,11 +1,14 @@
 import React from 'react';
 import './app.scss';
 import { Orderbook } from "./components/orderbook/orderbook";
+import { StoreProvider } from './context/store.context';
 
 export const App: React.FC = () => {
   return (
     <div className="app-container">
-      <Orderbook/>
+      <StoreProvider>
+        <Orderbook/>
+      </StoreProvider>
     </div>
   );
 }

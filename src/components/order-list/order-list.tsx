@@ -6,19 +6,18 @@ import { OrderItem } from "../order-item/order-item";
 interface OrderListProps {
     title: string;
     list: Order[];
-    cryptoCurrency: string;
     currency: string;
 }
 
-export const OrderList: React.FC<OrderListProps> = ({ title, list, cryptoCurrency, currency }) => (
+export const OrderList: React.FC<OrderListProps> = ({ title, list, currency }) => (
     <div className="order-list">
         <h3 className="order-list__title">{title}</h3>
         { list.length > 0 ? (
             <ul>
                 <li className="order-list__header">
                   <div>Rate</div>
-                  <div>{cryptoCurrency}</div>
-                  <div>{currency}</div>
+                  <div>{currency.split('-')[0]}</div>
+                  <div>{currency.split('-')[1]}</div>
                   <div>Offers</div>
                 </li>
                 {

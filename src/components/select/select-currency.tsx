@@ -3,24 +3,22 @@ import './select.scss';
 
 interface SelectCurrencyProps {
   list: string[];
-  realCurrency: string;
-  onRealCurrencyChange: (value: string) => void;
+  currency: string;
+  setOrderCurrency: (value: string) => void;
 }
 
-export const SelectCurrency: React.FC<SelectCurrencyProps> = ({ list, onRealCurrencyChange, realCurrency }) => {
-  const [selected, setSelected] = useState(realCurrency);
+export const SelectCurrency: React.FC<SelectCurrencyProps> = ({ list, currency, setOrderCurrency }) => {
   const [close, setClose] = useState(true);
 
   const click = (value: string) => {
-    setSelected(value);
-    onRealCurrencyChange(value);
     setClose(true);
+    setOrderCurrency(`${currency.split('-')[0]}-${value}`);
   };
 
   return (
     <div className="select">
       <button className="select__button" onClick={() => setClose(!close)} onBlur={() => setClose(true)}>
-        {selected}
+        {currency.split('-')[1]}
         <div className={`select__button-arrow${ close ? '' : ' select__button-arrow--flip' }`}>
         </div>
       </button>

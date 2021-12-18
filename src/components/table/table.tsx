@@ -1,17 +1,12 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import './table.scss';
-import { Order } from "../../models/order.model";
 import { OrderList } from "../order-list/order-list";
+import { StoreContext } from '../../context/store.context';
+import { Store } from '../../types/store.type';
 
-interface TableProps {
-    bidList: Order[];
-    askList: Order[];
-    cryptoCurrency: string;
-    currency: string;
-}
-
-export const Table: React.FC<TableProps> = ({ bidList, askList, cryptoCurrency, currency  }) => {
+export const Table: React.FC = () => {
+  const { bidList, askList, currency } = useContext(StoreContext) as unknown as Store;
   const config = {
     from: { opacity: 0, transform: "scale(0)" },
     to: { opacity: 1, transform: "scale(1)" },
@@ -21,23 +16,22 @@ export const Table: React.FC<TableProps> = ({ bidList, askList, cryptoCurrency, 
 
 
   useEffect(() => {
-    api({ opacity: 0, transform: "scale(0)" });
+    api.start({ opacity: 0, transform: "scale(0)" });
     setTimeout(() => {
-      api({ opacity: 1, transform: "scale(1)" });
+      api.start({ opacity: 1, transform: "scale(1)" });
     }, 800);
-  }, [cryptoCurrency, currency]);
+  }, [currency]);
 
 
   return (
     <div className="table">
       <animated.div className="table__bid" style={styles}>
-        <OrderList title={'Bid'} list={bidList} cryptoCurrency={cryptoCurrency}
-                   currency={currency}/>
+        <OrderList title={'Bid'} list={bidList} currency={currency}/>
       </animated.div>
       <div className="table__separator">
       </div>
       <animated.div className="table__ask" style={styles}>
-        <OrderList title={'Ask'} list={askList} cryptoCurrency={cryptoCurrency} currency={currency}/>
+        <OrderList title={'Ask'} list={askList} currency={currency}/>
       </animated.div>
     </div>
   );
