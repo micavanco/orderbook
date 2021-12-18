@@ -2,6 +2,8 @@
 
 Recruiting app to display current offers of bid and ask as an orderbook. User has option to choose between different cryptocurrencies and fiat money. Everytime user pick something application subscribe to new source of data transmitted by websocket and unsubscribe old one. On loading indicator there is a chance that currency is not available. 
 
+Deploy: https://micavanco.github.io/orderbook/
+
 ## Screenshots
 ![alt text](https://raw.githubusercontent.com/micavanco/orderbook/master/public/screenshot.jpg)
 
