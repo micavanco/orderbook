@@ -4,8 +4,13 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 479px;
+  border-radius: 4px;
   font-family: $primary-font;
-  animation: appear-start .8s 1 ease-in;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  margin: 10px;
+  background: $order-list-background;
 
   &__title {
     text-align: center;
@@ -32,7 +37,7 @@
     height: 40px;
     width: 40px;
     margin: auto;
-    background: linear-gradient(90deg, rgba(255,255,255,1) 50%, rgba(221,221,221,1) 50%);
+    background: linear-gradient(90deg, $order-list-background 50%, $spinner-background 50%);
     border-radius: 100%;
     text-align: center;
     -webkit-animation: rotate .8s infinite linear;
@@ -42,7 +47,7 @@
       height: 30px;
       width: 30px;
       border-radius: 100%;
-      background: white;
+      background: $order-list-background;
     }
   }
 
@@ -66,46 +71,5 @@
       -webkit-transform: rotate(360deg);
       transform: rotate(360deg);
     }
-  }
-}
-
-@-webkit-keyframes appear-start {
-  0% {
-    opacity: 0.01;
-  }
-  25% {
-    opacity: 0.21;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  75% {
-    opacity: 0.75;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes appear-start {
-  0% {
-
-    opacity: 0.01;
-  }
-  25% {
-
-    opacity: 0.21;
-  }
-  50% {
-
-    opacity: 0.5;
-  }
-  75% {
-
-    opacity: 0.75;
-  }
-  100% {
-
-    opacity: 1;
   }
 }

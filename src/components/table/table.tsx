@@ -10,13 +10,18 @@ interface TableProps {
     currency: string;
 }
 
-export const Table: React.FC<TableProps> = ({ bidList, askList, cryptoCurrency, currency  }) => (
+export const Table: React.FC<TableProps> = ({ bidList, askList, cryptoCurrency, currency  }) => {
+
+
+  return (
     <div className="table">
-        <div className="table__bid">
-            <OrderList title={'Bid'} list={bidList} cryptoCurrency={cryptoCurrency} currency={currency}/>
-        </div>
-        <div className="table__ask">
-            <OrderList title={'Ask'} list={askList} cryptoCurrency={cryptoCurrency} currency={currency}/>
-        </div>
+      <div className="table__bid">
+        <OrderList title={'Bid'} list={bidList} cryptoCurrency={cryptoCurrency} currency={currency}/>
+      </div>
+      <div className="table__ask">
+        <OrderList title={'Ask'} list={askList} cryptoCurrency={cryptoCurrency} currency={currency}/>
+      </div>
     </div>
-);
+  );
+}
+

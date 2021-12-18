@@ -1,8 +1,9 @@
+@import '../../styles/variables';
 
 .table {
   display: flex;
   flex-direction: column;
-  min-height: 490px;
+  min-height: 509px;
   margin-bottom: 20px;
 
   @media screen and (min-width: 600px) {
@@ -17,7 +18,7 @@
     flex: 1;
 
     @media screen and (min-width: 600px) {
-      border-left: 1px solid black;
+      border-left: 1px solid $separator;
     }
   }
 }

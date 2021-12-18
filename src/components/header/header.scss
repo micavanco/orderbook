@@ -32,12 +32,12 @@
     transition: background-color 0.2s ease-in-out;
 
     &:hover {
-      background: $currency-select-background;
+      background: $currency-select-background-hover;
     }
 
     &:focus {
       outline: none;
-      border: 1px solid $currency-select-background;
+      border: 1px solid $currency-select-background-hover;
     }
   }
 

@@ -2,5 +2,15 @@ $primary-font: 'Montserrat', sans-serif;
 
 
 // --------- Colors ------------
-$main-border: grey;
-$currency-select-background: #f8f8f8;
+
+$main-border: #d1d1d1;
+$main-background: #f3f3f3;
+$currency-select-background-hover: #e7e7e7;
+$order-list-background: #e7d8d8;
+$spinner-background: #ff1818;
+$dropdown-background: #fff;
+$separator: black;
+
+// --------- Shadows ------------
+
+$dropdown-shadow: 3px 5px 24px -16px rgba(66, 68, 90, 1);

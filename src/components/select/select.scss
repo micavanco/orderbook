@@ -18,12 +18,12 @@
     background: none;
 
     &:hover {
-      background: $currency-select-background;
+      background: $currency-select-background-hover;
     }
 
     &:focus {
       outline: none;
-      border: 1px solid $currency-select-background;
+      border: 1px solid $currency-select-background-hover;
     }
 
     &-arrow {
@@ -41,17 +41,17 @@
 
   &__dropdown {
     position: absolute;
-    height: 175px;
+    height: 170px;
     width: 160px;
     top: 21px;
     left: -11px;
     overflow-y: auto;
-    background: white;
+    background: $dropdown-background;
     border-radius: 4px;
     font-size: 0.875rem;
-    -webkit-box-shadow: 3px 5px 24px -16px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 3px 5px 24px -16px rgba(66, 68, 90, 1);
-    box-shadow: 3px 5px 24px -16px rgba(66, 68, 90, 1);
+    -webkit-box-shadow: $dropdown-shadow;
+    -moz-box-shadow: $dropdown-shadow;
+    box-shadow: $dropdown-shadow;
     z-index: 1000;
 
     &-item {
@@ -72,7 +72,7 @@
     }
 
     &-currency {
-      height: 140px;
+      height: 136px;
     }
   }
 }

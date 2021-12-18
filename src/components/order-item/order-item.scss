@@ -7,6 +7,11 @@
   font-family: $primary-font;
   -webkit-animation: appear .5s 1 ease-in;
   animation: appear .5s 1 ease-in;
+  font-size: 0.875rem;
+
+  @media screen and (min-width: 600px) {
+    font-size: 1rem;
+  }
 
   div {
     width: 100%;
