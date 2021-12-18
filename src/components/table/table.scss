@@ -14,11 +14,15 @@
     flex: 1;
   }
 
+  &__separator {
+    @media screen and (min-width: 600px) {
+      height: 529px;
+      width: 1px;
+      background: $separator;
+    }
+  }
+
   &__ask {
     flex: 1;
-
-    @media screen and (min-width: 600px) {
-      border-left: 1px solid $separator;
-    }
   }
 }
