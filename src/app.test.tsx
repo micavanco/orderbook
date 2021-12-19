@@ -5,8 +5,6 @@ import App from './app';
 
 describe('App', () => {
   it('should render orderbook component', () => {
-    const StoreProvider = ({ children }: any) => (<>{children}</>);
-    const Orderbook = ({ children }: any) => (<>{children}</>);
 
     const { container } = render(<App/>);
     screen.debug();
