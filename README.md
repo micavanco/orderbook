@@ -13,3 +13,6 @@ Deploy: https://micavanco.github.io/orderbook/
 * Sass 7.0.0
 * Jest 27.0.1
 * Typescript 4.5.2
+
+## Code coverage
+![alt text](https://raw.githubusercontent.com/micavanco/orderbook/master/public/screenshot2.jpg)
